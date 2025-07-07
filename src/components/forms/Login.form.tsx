@@ -4,6 +4,7 @@ import { Card } from "components";
 import { ButtonIcon } from "components";
 import GoogleIcon from "assets/icons/ic_google.svg";
 import { supabase } from "service/supabase/connection";
+import { REACT_APP_REDIRECT_URL_PROD } from "utils/contstant";
 
 const LoginForm: React.FC = () => {
   const handleLogin = async () => {
@@ -15,7 +16,7 @@ const LoginForm: React.FC = () => {
         redirectTo:
           process.env.NODE_ENV === "development"
             ? "http://localhost:3000/sales"
-            : "https://sesukamu-pos.vercel.app/sales",
+            : REACT_APP_REDIRECT_URL_PROD || "https://sesukamu-pos.vercel.app/sales",
       }
     );
   };
